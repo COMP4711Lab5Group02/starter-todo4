@@ -23,18 +23,20 @@ class Application extends CI_Controller
 
 		//  Set basic view parameters
 		$this->data = array ();
-		$this->data['pagetitle'] = 'TODO List Manager';
+		$this->data['pagetitle'] = 'Lab 5 Group 2';
 		$this->data['ci_version'] = (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>'.CI_VERSION.'</strong>' : '';
 	}
 
 	/**
 	 * Render this page
 	 */
-	function render($template = 'template')
-	{
-        $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
-		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-		$this->parser->parse('template', $this->data);
-	}
+        function render($template = 'template')
+        {
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
+            // use layout content if provided
+            if (!isset($this->data['content']))
+                $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
+            $this->parser->parse($template, $this->data);
+        }
 
 }
