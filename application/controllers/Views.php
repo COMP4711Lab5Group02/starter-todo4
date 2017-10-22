@@ -51,20 +51,7 @@ class Views extends Application
         return $this->parser->parse('by_category', $parms, true);
     }
     
-}
-
-// return -1, 0, or 1 of $a's priority is higher, equal to, or lower than $b's
-function orderByPriority($a, $b)
-{
-    if ($a->priority > $b->priority)
-        return -1;
-    elseif ($a->priority < $b->priority)
-        return 1;
-    else
-        return 0;
-}
-
-// complete flagged items
+    // complete flagged items
 function complete() {
     $role = $this->session->userdata('userrole');
     if ($role != ROLE_OWNER) redirect('/work');
@@ -80,4 +67,17 @@ function complete() {
         }
     }
     $this->index();
+}
+    
+}
+
+// return -1, 0, or 1 of $a's priority is higher, equal to, or lower than $b's
+function orderByPriority($a, $b)
+{
+    if ($a->priority > $b->priority)
+        return -1;
+    elseif ($a->priority < $b->priority)
+        return 1;
+    else
+        return 0;
 }
