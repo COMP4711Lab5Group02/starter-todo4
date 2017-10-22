@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="/assets/css/default.css"/>
 	</head>
 	<body>
-        <div id="content">
+        <div class="container">
              <div class="navbar">
                 <div class="navbar-inner">
                     {menubar} 
@@ -18,12 +18,12 @@
             <div id="content">
                 <h1>{pagetitle}</h1>
                 <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        {leftside}
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        {rightside}
-                    </div>
+                <div class="span6">
+                     {leftside}
+                 </div>
+                 <div class="span6">
+                     {rightside}
+                 </div>
                 </div>
             </div>
             <div id="footer" class="span12">
