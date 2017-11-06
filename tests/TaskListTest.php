@@ -12,7 +12,7 @@ class TaskListTest extends PHPUnit\Framework\TestCase
       $this->CI = &get_instance();
     }
     
-    public function compareTasks()
+    public function test1()
     {
         $tasks  = $this->CI->tasks->all;
         
