@@ -1,28 +1,27 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-if (!class_exists('PHPUnit_Framework_TestCase'))
-    class_alias('PHPUnit\Framework\TestCase', 'PHPUnit_Framework_TestCase');
 	
 /**
  * @author Francis Carreon
  */
-class TaskListTest extends PHPUnit_Framework_TestCase
+class TaskListTest extends PHPUnit\Framework\TestCase
 {
+    private $CI;
+    
+    public function setUp()
+    {
+      $this->CI = &get_instance();
+    }
+    
     public function compareTasks()
     {
-        $tasks          = new Tasks();
-        $this->tasklist = $tasks->all();
+        $tasks  = $this->CI->tasks->all;
         
-        foreach ($this->tasklist as $task)
+        $undone = 0;
+        
+        foreach ($tasks as $task)
             if ($task->status != 2)
-                $undone[] = $task;
+                ++$undone;
         
-        $this->assertGreaterThan(count($this->tasklist), count($undone));
+        $this->assertGreaterThan(count($tasks), $undone);
     }
 }
