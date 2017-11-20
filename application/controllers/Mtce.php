@@ -133,7 +133,7 @@ class Mtce extends Application {
         {
             if (empty($task->id))
             {
-                                $task->id = $this->tasks->highest() + 1;
+                $task->id = $this->tasks->highest() + 1;
                 $this->tasks->add($task);
                 $this->alert('Task ' . $task->id . ' added', 'success');
             } else
